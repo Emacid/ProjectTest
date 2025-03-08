@@ -14,6 +14,7 @@ public class UserInput : Singleton<UserInput>
     public InputAction MoveAction { get { return _moveAction; } }
     private InputAction _jumpAction;
     private InputAction _scaleIncreaseAction;
+    private InputAction _ChangeColorAction;
 
 
     [Header("Device")]
@@ -71,10 +72,12 @@ public class UserInput : Singleton<UserInput>
         _moveAction = _playerInput.actions["Move"];
         _jumpAction = _playerInput.actions["Jump"];
         _scaleIncreaseAction = _playerInput.actions["Player_ScaleIncrease"];
+        _ChangeColorAction = _playerInput.actions["Player_ChangeColor"];
 
         _jumpAction.performed += ctx => InputAction_Jump(true);
         _jumpAction.canceled += ctx => InputAction_Jump(false);
         _scaleIncreaseAction.performed += ctx => InputAction_ScaleIncrease();
+        _ChangeColorAction.performed += ctx => InputAction_ChangeColor();
         #endregion
     }
 
@@ -86,6 +89,10 @@ public class UserInput : Singleton<UserInput>
     private void InputAction_ScaleIncrease()
     {
         EventManager<bool>.EventTrigger(EventKey.Player_ScaleIncrease, true);
+    }
+    private void InputAction_ChangeColor()
+    {
+        EventManager<bool>.EventTrigger(EventKey.Player_ChangeColor, true);
     }
     #endregion
 

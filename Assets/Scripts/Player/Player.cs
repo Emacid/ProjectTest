@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
         EventManager<bool>.EventRegister(EventKey.Jump, Movement_JumpInput);
         EventManager<bool>.EventRegister(EventKey.ControlEnabled_All, ControlEnabled_Set);
         EventManager<bool>.EventRegister(EventKey.Player_ScaleIncrease, ScaleIncrease);
+        EventManager<bool>.EventRegister(EventKey.Player_ChangeColor, ChangeColor);
         #endregion
     }
     private void OnDisable()
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
         EventManager<bool>.EventUnregister(EventKey.Jump, Movement_JumpInput);
         EventManager<bool>.EventUnregister(EventKey.ControlEnabled_All, ControlEnabled_Set);
         EventManager<bool>.EventUnregister(EventKey.Player_ScaleIncrease, ScaleIncrease);
+        EventManager<bool>.EventUnregister(EventKey.Player_ChangeColor, ChangeColor);
         #endregion
     }
     #endregion
@@ -150,6 +152,15 @@ public class Player : MonoBehaviour
             transform.localScale.x + .1f,
             transform.localScale.y + .1f,
             transform.localScale.z + .1f);
+    }
+    #endregion
+
+    #region Color
+    /// <summary>Change the player color.</summary>
+    /// /// <param name="param">Will not be used. (Created for the case study).</param>
+    private void ChangeColor(bool param)
+    {
+        sRenderer.color = Random.ColorHSV();
     }
     #endregion
 }

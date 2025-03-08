@@ -50,6 +50,7 @@ public enum EventKey
     PlayerFlip,
     Jump,
     Player_ScaleIncrease,
+    Player_ChangeColor, // Added for the test assignment
     Input_DeviceUpdated,
     Input_ActionMap_Update,
     Input_ActionMap_Updated,
